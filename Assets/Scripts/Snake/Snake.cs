@@ -3,21 +3,16 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField] private Transform snakePartsParent;
-    [SerializeField] private Transform snakeHead;
-    [SerializeField] private Transform snakeChunk;
     
-    [SerializeField, Range(1, 20)] private int snakeChunksCount;
-    [SerializeField, Range(1, 20)] private float snakeLength; 
+    [SerializeField] private SnakeFactory snakeFactory;
+    [SerializeField, Range(1, 20)] private int chunksCount;
+    [SerializeField, Range(1, 20)] private float length;
     
-    [SerializeField, Range(1, 5)] private float chunkPositionsCount;   
+    private Transform head;
+    private List<Transform> chunks;
     
-    private List<Vector3> chunkPositions;
-    private List<Transform> snakeChunks;
-
     private void Awake()
-    {
-        snakeChunks = new List<Transform>(snakeChunksCount);
+    {       
         CreateSnake();
     }
 
@@ -25,21 +20,23 @@ public class Snake : MonoBehaviour
     {
         Vector3 headPosition = GetHeadPosition();
 
-        Transform head = Instantiate(snakeHead, snakePartsParent);
+        head = snakeFactory.GetSnakeHead();
         head.localPosition = headPosition;
 
-        Vector3 delta = new Vector3(0, 0, snakeLength / snakeChunksCount) ;
+        chunks = new List<Transform>(chunksCount);
 
-        for (int i = 1; i <= snakeChunksCount; i++)
+        Vector3 delta = new Vector3(0, 0, length / chunksCount) ;
+       
+        for (int i = 1; i <= chunksCount; i++)
         {
-            Transform chunk = Instantiate(snakeChunk, snakePartsParent);
-            snakeChunks.Add(chunk);
+            Transform chunk = snakeFactory.GetSnakeChunk();
+            chunks.Add(chunk);
             chunk.localPosition = headPosition - delta * i;
         }
     }
 
-    public Vector3 GetHeadPosition()
+    private Vector3 GetHeadPosition()
     {
-        return new Vector3(0, 0, snakeLength / 2);
+        return new Vector3(0, 0, length / 2);
     }
 }
