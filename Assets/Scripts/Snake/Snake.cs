@@ -18,7 +18,7 @@ public class Snake : MonoBehaviour
 
     private void CreateSnake()
     {
-        Vector3 headPosition = GetHeadPosition();
+        /*Vector3 headPosition = GetHeadPosition();
 
         head = snakeFactory.GetSnakeHead();
         head.localPosition = headPosition;
@@ -32,7 +32,7 @@ public class Snake : MonoBehaviour
             Transform chunk = snakeFactory.GetSnakeChunk();
             chunks.Add(chunk);
             chunk.localPosition = headPosition - delta * i;
-        }
+        }*/
     }
 
     private Vector3 GetHeadPosition()
