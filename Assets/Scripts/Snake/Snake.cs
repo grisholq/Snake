@@ -3,40 +3,24 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    
-    [SerializeField] private SnakeFactory snakeFactory;
-    [SerializeField, Range(1, 20)] private int chunksCount;
-    [SerializeField, Range(1, 20)] private float length;
-    
-    private Transform head;
-    private List<Transform> chunks;
-    
-    private void Awake()
-    {       
-        CreateSnake();
-    }
+    [SerializeField] private float speed;
+    [SerializeField] private float sideSpeed;
 
-    private void CreateSnake()
+    public Transform Head { get; set; }
+    public List<Transform> Chunks { get; set; }
+
+    private void Update()
     {
-        /*Vector3 headPosition = GetHeadPosition();
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
-        head = snakeFactory.GetSnakeHead();
-        head.localPosition = headPosition;
-
-        chunks = new List<Transform>(chunksCount);
-
-        Vector3 delta = new Vector3(0, 0, length / chunksCount) ;
-       
-        for (int i = 1; i <= chunksCount; i++)
+        if (Input.GetKey(KeyCode.A))
         {
-            Transform chunk = snakeFactory.GetSnakeChunk();
-            chunks.Add(chunk);
-            chunk.localPosition = headPosition - delta * i;
-        }*/
-    }
-
-    private Vector3 GetHeadPosition()
-    {
-        return new Vector3(0, 0, length / 2);
-    }
+            transform.Translate(Vector3.left * Time.deltaTime * sideSpeed);
+        }
+            
+        if(Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * sideSpeed);
+        }           
+    }     
 }
