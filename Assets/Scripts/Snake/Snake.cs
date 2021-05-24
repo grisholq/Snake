@@ -3,112 +3,58 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField, Range(1, 20)] private int chunksCount;
-    [SerializeField, Range(1, 20)] private float length;
+    /*[SerializeField] private SnakeEater eater;
 
-    [SerializeField] private Transform headPrefab;
-    [SerializeField] private Transform chunkPrefab;
 
-    [SerializeField] private float forwardSpeed;
-    [SerializeField] private float forwardSpeedDecreace;
-    [SerializeField] private float sideSpeed;
        
     [SerializeField] private CameraFollower cameraFollower;
 
-    [Header("Chunk Settings")]
+    
 
-    [SerializeField] private float minDistance;
-    [SerializeField] private float maxDistance;
+    [SerializeField] private Color snakeColor;
 
-    [SerializeField] private float minSpeed;
-    [SerializeField] private float maxSpeed;
 
-    private SnakeHead snakeHead;
-    private List<SnakeChunk> snakeChunks;
+    private LinkedList<Human> humansToEat;
 
     private void Awake()
     {
-        CreateSnake();
+        humansToEat = new LinkedList<Human>();
     }
 
     private void Update()
     {
         ProcessMovement();
+        EatHumen();
     }
 
-    private void ProcessMovement()
+
+
+
+
+
+
+    private void OnHeadCollision(Collider other)
     {
-        Vector3 velocity = new Vector3();
+        Checkpoint checkpoint = other.gameObject.GetComponent<Checkpoint>();
+        Human human = other.gameObject.GetComponent<Human>();
 
-        velocity += Vector3.forward * forwardSpeed;
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            velocity += Vector3.left * sideSpeed;
-            velocity -= Vector3.forward * forwardSpeedDecreace;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            velocity += Vector3.right * sideSpeed;
-            velocity -= Vector3.forward * forwardSpeedDecreace;
-        }
-
-        snakeHead.SetVelocity(velocity);
-
-        for (int i = snakeChunks.Count - 1; i >= 0; i--)
-        {
-            snakeChunks[i].Move();
-        }
+        if (checkpoint != null) OnCheckpointEntering(checkpoint);
+        if (human != null) OnHumanEntering(human);
     }
 
-    private void CreateSnake()
+    private void OnCheckpointEntering(Checkpoint checkpoint)
     {
-        Vector3 headPosition = GetHeadLocalPosition();
-        Vector3 delta = new Vector3(0, 0, length / chunksCount);
-
-        snakeHead = GetHead();
-        snakeHead.transform.localPosition = GetHeadLocalPosition();
-
-        snakeChunks = new List<SnakeChunk>(chunksCount);
-
-        for (int i = 1; i <= chunksCount; i++)
-        {
-            SnakeChunk chunk = GetChunk();
-            InizializeChunk(chunk);
-            chunk.transform.localPosition = headPosition - delta * i;
-            snakeChunks.Add(chunk);
-        }
-
-        snakeChunks[0].NextChunk = snakeHead.transform;
-
-        for (int i = 1; i < chunksCount; i++)
-        {
-            snakeChunks[i].NextChunk = snakeChunks[i-1].transform;
-        }
-
-        cameraFollower.Followed = snakeHead.transform;
+        snakeColor = checkpoint.CheckpointColor;
     }
 
-    private void InizializeChunk(SnakeChunk chunk)
+    private void OnHumanEntering(Human human)
     {
-        chunk.MinDistance = minDistance;
-        chunk.MaxDistance = maxDistance;
-        chunk.MinSpeed = minDistance;
-        chunk.MaxSpeed = maxSpeed;
+        human.SetColliderActivity(false);
+        humansToEat.AddLast(human);
     }
-
-    private SnakeHead GetHead()
+    
+    private void OnCrystalEntering(Human human)
     {
-        return Instantiate(headPrefab, transform).GetComponent<SnakeHead>();
-    }
-
-    private SnakeChunk GetChunk()
-    {
-        return Instantiate(chunkPrefab, transform).GetComponent<SnakeChunk>();
-    }
-
-    private Vector3 GetHeadLocalPosition()
-    {
-        return new Vector3(0, 0, length / 2);
-    }     
+        human.Destroy();
+    }*/
 }
