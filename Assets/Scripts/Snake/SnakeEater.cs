@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SnakeParts))]
+[RequireComponent(typeof(SnakeData))]
 public class SnakeEater : MonoBehaviour
 {
     [SerializeField] private float pullForce;
@@ -9,12 +9,12 @@ public class SnakeEater : MonoBehaviour
 
     private LinkedList<Transform> pullFood;
 
-    private SnakeParts parts;
+    private SnakeData parts;
 
     private void Start()
     {
         pullFood = new LinkedList<Transform>();
-        parts = GetComponent<SnakeParts>();
+        parts = GetComponent<SnakeData>();
     }
 
     private void Update()
@@ -48,8 +48,8 @@ public class SnakeEater : MonoBehaviour
 
             if (range <= pullEatRange)
             {
-                EatImmediately(food);
                 node = RemoveNode(node);
+                EatImmediately(food); 
                 continue;
             }
 

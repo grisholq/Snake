@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(SnakeParts))]
+[RequireComponent(typeof(SnakeData))]
 public class SnakeCreator : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] private int chunksCount;
@@ -12,12 +12,12 @@ public class SnakeCreator : MonoBehaviour
     [SerializeField] CameraFollower cameraFollower;
 
     private SnakePartsFactory factory;
-    private SnakeParts parts;
+    private SnakeData data;
 
     private void Awake()
     {
         factory = GetComponent<SnakePartsFactory>();
-        parts = GetComponent<SnakeParts>();
+        data = GetComponent<SnakeData>();
         CreateSnake();
     }
 
@@ -32,8 +32,8 @@ public class SnakeCreator : MonoBehaviour
         SnakeHead head = factory.GetHead();
         head.transform.localPosition = GetHeadLocalPosition();
         head.OnCollision += null;
-        parts.Head = head;
-        cameraFollower.Followed = parts.Head.transform;
+        data.Head = head;
+        cameraFollower.Followed = data.Head.transform;
     }
 
     private void CreateSnakeChunks()
@@ -50,22 +50,24 @@ public class SnakeCreator : MonoBehaviour
             chunks.Add(chunk);
         }
 
-        parts.Chunks = chunks;
+        data.Chunks = chunks;
         
         InizializeChunks();
     }
 
     public void InizializeChunks()
     {
-        List<SnakeChunk> chunks = parts.Chunks;
+        List<SnakeChunk> chunks = data.Chunks;
 
-        chunks[0].NextChunk = parts.Head.transform;
+        chunks[0].NextChunk = data.Head.transform;
         chunks[0].ChunkSettings = chunkSettings;
+        chunks[0].SetChunkColor(data.SnakeColor);
 
         for (int i = 1; i < chunksCount; i++)
         {
             chunks[i].NextChunk = chunks[i - 1].transform;
             chunks[i].ChunkSettings = chunkSettings;
+            chunks[i].SetChunkColor(data.SnakeColor);
         }
     }
 

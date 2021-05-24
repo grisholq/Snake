@@ -1,21 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SnakeInput), typeof(SnakeParts))]
+[RequireComponent(typeof(SnakeInput), typeof(SnakeData))]
 public class SnakeMover : MonoBehaviour
 {
     [SerializeField] private float forwardSpeed;
     [SerializeField] private float forwardSpeedDecreace;
     [SerializeField] private float sideSpeed;
 
-    private SnakeParts parts;
+    private SnakeData parts;
     private SnakeInput input;
 
     private Vector3 velocity;
 
     private void Awake()
     {
-        parts = GetComponent<SnakeParts>();
+        parts = GetComponent<SnakeData>();
         input = GetComponent<SnakeInput>();
     }
 

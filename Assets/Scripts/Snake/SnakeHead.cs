@@ -4,9 +4,11 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     private new Rigidbody rigidbody;
+   
+    public event Action<Collider> OnSafeObjectCollision;
+    public event Action<Collider> OnDangerousObjectCollision;
+    public event Action<Collider> OnEdibleObjectCollision;
 
-    public event Action<Collider> OnCollision;
-    
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -19,6 +21,17 @@ public class SnakeHead : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnCollision(other);
+        if(other.gameObject.GetComponent<SafeRoadObject>())
+        {
+            OnSafeObjectCollision.Invoke(other);
+        }
+        else if (other.gameObject.GetComponent<DangerousRoadObject>())
+        {
+            OnDangerousObjectCollision.Invoke(other);
+        }
+        else if (other.gameObject.GetComponent<EdibleRoadObject>())
+        {
+            OnEdibleObjectCollision.Invoke(other);
+        }
     }
 }

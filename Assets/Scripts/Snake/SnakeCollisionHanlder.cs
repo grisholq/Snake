@@ -1,27 +1,42 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SnakeParts), typeof(SnakeEater))]
+[RequireComponent(typeof(SnakeData), typeof(SnakeEater), typeof(SnakeEvents))]
 public class SnakeCollisionHanlder : MonoBehaviour
 {
-    private SnakeParts parts;
+    private SnakeData parts;
     private SnakeEater eater;
+    private SnakeEvents events;
 
     private void Start()
     {
-        parts = GetComponent<SnakeParts>();
+        parts = GetComponent<SnakeData>();
         eater = GetComponent<SnakeEater>();
-        parts.Head.OnCollision += HandleCollision;
+        events = GetComponent<SnakeEvents>();
+
+        parts.Head.OnDangerousObjectCollision += HandleDangerousCollisions;
+        parts.Head.OnEdibleObjectCollision += HandleFoodCollisions;
+        parts.Head.OnSafeObjectCollision += HandleSafeCollisions;
     }
 
-    public void HandleCollision(Collider other)
+    public void HandleDangerousCollisions(Collider other)
     {
-        Human human = other.gameObject.GetComponent<Human>();
 
-        if (human != null) HandleHuman(human);
+    }
+
+    public void HandleSafeCollisions(Collider other)
+    {
+
+    }
+
+    public void HandleFoodCollisions(Collider other)
+    {
+        eater.EatByPull(other.gameObject.transform);
     }
 
     private void HandleHuman(Human human)
     {
+        if (human == null) return;
+        human.SetColliderActivity(false);
         eater.EatByPull(human.transform);
     }
     
@@ -34,11 +49,16 @@ public class SnakeCollisionHanlder : MonoBehaviour
     {
 
     }
-    
-    
-    
-    private void HandleObstacle()
+     
+    private void HandleObstacle(Bomb obstacle)
     {
+        if (obstacle == null) return;
+        events.Die();
+    }
 
+    private void HandleFinish(Finish finish)
+    {
+        if (finish == null) return;
+        events.Finish();
     }
 }
