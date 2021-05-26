@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class Human : EdibleRoadObject
+public class Human : MonoBehaviour
 {
     [SerializeField] private Color color;
 

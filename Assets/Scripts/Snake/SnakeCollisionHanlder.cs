@@ -13,24 +13,15 @@ public class SnakeCollisionHanlder : MonoBehaviour
         eater = GetComponent<SnakeEater>();
         events = GetComponent<SnakeEvents>();
 
-        parts.Head.OnDangerousObjectCollision += HandleDangerousCollisions;
-        parts.Head.OnEdibleObjectCollision += HandleFoodCollisions;
-        parts.Head.OnSafeObjectCollision += HandleSafeCollisions;
+        parts.Head.OnCollision += HandleCollisions;
     }
 
-    public void HandleDangerousCollisions(Collider other)
+    public void HandleCollisions(Collider other)
     {
-
-    }
-
-    public void HandleSafeCollisions(Collider other)
-    {
-
-    }
-
-    public void HandleFoodCollisions(Collider other)
-    {
-        eater.EatByPull(other.gameObject.transform);
+        HandleHuman(other.GetComponent<Human>());
+        HandleCheckpoint(other.GetComponent<Checkpoint>());
+        HandleBomb(other.GetComponent<Bomb>());
+        HandleFinish(other.GetComponent<Finish>());
     }
 
     private void HandleHuman(Human human)
@@ -50,7 +41,7 @@ public class SnakeCollisionHanlder : MonoBehaviour
 
     }
      
-    private void HandleObstacle(Bomb obstacle)
+    private void HandleBomb(Bomb obstacle)
     {
         if (obstacle == null) return;
         events.Die();

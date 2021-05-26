@@ -1,4 +1,6 @@
-public class Bomb : DangerousRoadObject
+using UnityEngine;
+
+public class Bomb : MonoBehaviour
 {
 
 }

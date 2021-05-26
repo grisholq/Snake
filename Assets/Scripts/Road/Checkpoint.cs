@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Checkpoint : SafeRoadObject
+public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private Color checkpointColor;
     

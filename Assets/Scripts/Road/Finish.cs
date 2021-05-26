@@ -1,4 +1,6 @@
-public class Finish : SafeRoadObject
+using UnityEngine;
+
+public class Finish : MonoBehaviour
 {
 
 }
