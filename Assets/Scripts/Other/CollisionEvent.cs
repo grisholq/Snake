@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class CollisionEvent : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<Collider> onCollision;
+    public event Action<Collider> CollisionOccured;
 
     private void OnTriggerEnter(Collider other)
     {
-        onCollision.Invoke(other);
+        CollisionOccured(other);
     }
 }

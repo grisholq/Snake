@@ -3,19 +3,19 @@ using UnityEngine.Events;
 
 public class SnakeEvents : MonoBehaviour
 {
-    [SerializeField] private UnityEvent onSnakeDeath;
-    [SerializeField] private UnityEvent onSnakeReachFinish;
+    [SerializeField] private UnityEvent SnakeDeath;
+    [SerializeField] private UnityEvent SnakeFinish;
 
-    public UnityEvent OnSnakeDeath { get => onSnakeDeath; set => onSnakeDeath = value; }
-    public UnityEvent OnSnakeReachFinish { get => onSnakeReachFinish; set => onSnakeReachFinish = value; }
+    public UnityEvent OnSnakeDeath { get => SnakeDeath; set => SnakeDeath = value; }
+    public UnityEvent OnSnakeReachFinish { get => SnakeFinish; set => SnakeFinish = value; }
 
     public void Die()
     {
-        onSnakeDeath.Invoke();
+        SnakeDeath.Invoke();
     }
 
     public void Finish()
     {
-        onSnakeReachFinish.Invoke();
+        SnakeFinish.Invoke();
     }
 }

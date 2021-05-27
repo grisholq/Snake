@@ -57,10 +57,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315719342858593624}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 0.9, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &153865695494567347
 MonoBehaviour:
@@ -74,21 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92439e9993e897e46946649cd64c8765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCollision:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1329469243472943018}
-        m_TargetAssemblyTypeName: SnakeHead, Assembly-CSharp
-        m_MethodName: HeadCollision
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Collider, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6529470748329804884
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,8 +86,7 @@ GameObject:
   - component: {fileID: 3831099979959717367}
   - component: {fileID: 8434420406344280021}
   - component: {fileID: 569271160349432169}
-  - component: {fileID: 4324728121505560105}
-  - component: {fileID: 7267494753258341349}
+  - component: {fileID: 6553248635490305947}
   - component: {fileID: 1329469243472943018}
   m_Layer: 0
   m_Name: Head
@@ -192,21 +176,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &4324728121505560105
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6529470748329804884}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8343571, y: 1, z: 0.91386485}
-  m_Center: {x: 0.0028558671, y: 0, z: 1.0050907}
---- !u!65 &7267494753258341349
-BoxCollider:
+--- !u!135 &6553248635490305947
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -216,8 +187,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.9584604}
-  m_Center: {x: 0, y: 0, z: 0.020769805}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1329469243472943018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9beef08543fa0d469bde23a24b49b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headCollisionEvent: {fileID: 153865695494567347}
+  foodCollisionEvent: {fileID: 837698143078167517}
 --- !u!1 &6982160745731655062
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,11 +260,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6982160745731655062}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!114 &837698143078167517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,18 +277,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92439e9993e897e46946649cd64c8765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCollision:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1329469243472943018}
-        m_TargetAssemblyTypeName: SnakeHead, Assembly-CSharp
-        m_MethodName: FoodCollision
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Collider, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

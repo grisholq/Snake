@@ -31,7 +31,6 @@ public class SnakeCreator : MonoBehaviour
     {
         SnakeHead head = factory.GetHead();
         head.transform.localPosition = GetHeadLocalPosition();
-        head.OnCollision += null;
         data.Head = head;
         cameraFollower.Followed = data.Head.transform;
     }
