@@ -1920,7 +1920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7481943, y: 0.9392965}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280350508
@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.3
+  m_fontSize: 31.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 25
   forwardSpeedDecreace: 3
-  sideSpeed: 55
+  sideSpeed: 47
   fewerDuration: 5
   fewerSpeedMultiplier: 3
   fewerMidleMovespeed: 40
@@ -5408,7 +5408,7 @@ Transform:
   - {fileID: 1276461701}
   - {fileID: 315987006}
   m_Father: {fileID: 1971012560}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &627124313 stripped
 GameObject:
@@ -6501,7 +6501,7 @@ Transform:
   - {fileID: 1803713886}
   - {fileID: 184114793}
   m_Father: {fileID: 1971012560}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &886989582
 PrefabInstance:
@@ -6735,7 +6735,7 @@ Transform:
   - {fileID: 1744871970}
   - {fileID: 1691543067}
   m_Father: {fileID: 1971012560}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &946111894 stripped
 Transform:
@@ -10739,10 +10739,10 @@ RectTransform:
   m_Father: {fileID: 1426927376}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104, y: -121.3}
-  m_SizeDelta: {x: 70, y: 35}
+  m_AnchorMin: {x: 0, y: 0.26129642}
+  m_AnchorMax: {x: 0.25161156, y: 0.32229644}
+  m_AnchoredPosition: {x: 0, y: 0.69999695}
+  m_SizeDelta: {x: 0, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248919768
 MonoBehaviour:
@@ -11198,11 +11198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3890512976298335496, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: checkpointColor.b
-      value: 0.74113595
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3890512976298335496, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: checkpointColor.g
-      value: 1
+      value: 0.7810224
       objectReference: {fileID: 0}
     - target: {fileID: 3890512976298335496, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: checkpointColor.r
@@ -12102,7 +12102,7 @@ Transform:
   - {fileID: 1434506576}
   - {fileID: 765323254}
   m_Father: {fileID: 1971012560}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1394581247
 PrefabInstance:
@@ -14543,11 +14543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3890512976298335496, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: checkpointColor.g
-      value: 0.67016447
+      value: 0.33333337
       objectReference: {fileID: 0}
     - target: {fileID: 3890512976298335496, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: checkpointColor.r
-      value: 0.33333337
+      value: 0.56424844
       objectReference: {fileID: 0}
     - target: {fileID: 5172078869573023151, guid: f74730c0d3389784897fb1e3543d520b, type: 3}
       propertyPath: m_Name
@@ -16221,7 +16221,7 @@ Transform:
   - {fileID: 1994194246}
   - {fileID: 1941963028}
   m_Father: {fileID: 1971012560}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1803713885
 GameObject:
@@ -18045,7 +18045,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 100944544}
-  - {fileID: 1987803622}
   - {fileID: 876428771}
   - {fileID: 621846652}
   - {fileID: 1777120282}
@@ -18182,36 +18181,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987354016}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1987803621
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987803622}
-  m_Layer: 0
-  m_Name: Water
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1987803622
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987803621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1971012560}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1993042329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8840290263662170317, guid: ee3321c8f74d5274aa40874c75d5b076, type: 3}
@@ -18792,7 +18761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
