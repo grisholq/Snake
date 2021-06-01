@@ -5,21 +5,38 @@ using UnityEngine;
 public class SnakeEater : MonoBehaviour
 {
     [SerializeField] private float pullForce;
+    [SerializeField] private float fewerPullForce;
     [SerializeField] private float pullEatRange;
+
+    [SerializeField] private float crystalsToFewer;
 
     private LinkedList<Transform> pullFood;
 
-    private SnakeData parts;
+    private SnakeData data;
+
+    public int HumansEaten { get; set; }
+    public int CrystalsEaten { get; set; }
+    public int CrystalsFewerEaten { get; set; }
 
     private void Start()
     {
         pullFood = new LinkedList<Transform>();
-        parts = GetComponent<SnakeData>();
+        data = GetComponent<SnakeData>();
+
+        HumansEaten = 0;
+        CrystalsEaten = 0;
+        CrystalsFewerEaten = 0;
     }
 
     private void Update()
     {
         UpdatePullFood();
+
+        if(crystalsToFewer == CrystalsFewerEaten)
+        {
+            CrystalsFewerEaten = 0;
+            data.IsInFewer = true;
+        }
     }
 
     public void EatImmediately(Transform food)
@@ -42,9 +59,10 @@ public class SnakeEater : MonoBehaviour
         {
             Transform food = node.Value;
 
-            food.position = Vector3.MoveTowards(food.position, parts.Head.transform.position, Time.deltaTime * pullForce);
+            float force = data.IsInFewer ? fewerPullForce : pullForce ;
+            food.position = Vector3.MoveTowards(food.position, data.Head.transform.position, Time.deltaTime * force);
 
-            float range = Vector3.Distance(food.position, parts.Head.transform.position);
+            float range = Vector3.Distance(food.position, data.Head.transform.position);
 
             if (range <= pullEatRange)
             {

@@ -18,10 +18,16 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SnakeChunk chunk = other.GetComponent<SnakeChunk>();
+        SnakeHead head = other.GetComponent<SnakeHead>();
         
         if(chunk != null)
         {
-            chunk.SetChunkColor(checkpointColor);
+            chunk.SetColor(checkpointColor);
+        }
+        
+        if(head != null)
+        {
+            head.SetColor(checkpointColor);
         }
     }
 }

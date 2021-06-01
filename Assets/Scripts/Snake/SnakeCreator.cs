@@ -60,13 +60,13 @@ public class SnakeCreator : MonoBehaviour
 
         chunks[0].NextChunk = data.Head.transform;
         chunks[0].ChunkSettings = chunkSettings;
-        chunks[0].SetChunkColor(data.SnakeColor);
+        chunks[0].SetColor(data.SnakeColor);
 
         for (int i = 1; i < chunksCount; i++)
         {
             chunks[i].NextChunk = chunks[i - 1].transform;
             chunks[i].ChunkSettings = chunkSettings;
-            chunks[i].SetChunkColor(data.SnakeColor);
+            chunks[i].SetColor(data.SnakeColor);
         }
     }
 

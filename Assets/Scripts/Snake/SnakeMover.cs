@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,18 +9,56 @@ public class SnakeMover : MonoBehaviour
     [SerializeField] private float forwardSpeedDecreace;
     [SerializeField] private float sideSpeed;
 
-    private SnakeData parts;
+    [SerializeField] private float fewerDuration;
+    [SerializeField] private float fewerSpeedMultiplier;
+    [SerializeField] private float fewerMidleMovespeed;
+
+    private SnakeData data;
     private SnakeInput input;
 
     private Vector3 velocity;
 
+    private Coroutine fewerCoroutine;
+
     private void Awake()
     {
-        parts = GetComponent<SnakeData>();
+        data = GetComponent<SnakeData>();
         input = GetComponent<SnakeInput>();
     }
 
     private void Update()
+    {
+        if(data.IsInFewer)
+        {
+            MoveSnakeInFewer();
+        }
+        else
+        {
+            MoveSnake();
+        }
+
+        MoveChunks();
+    }
+
+    private void MoveSnakeInFewer()
+    {
+        velocity = Vector3.zero;
+
+        MoveForwardFewer();
+
+        Vector3 position = data.Head.transform.position;
+        position.x = Mathf.MoveTowards(position.x, 0, Time.deltaTime * fewerMidleMovespeed);
+        data.Head.transform.position = position;
+
+        data.Head.SetVelocity(velocity);
+
+        if (fewerCoroutine == null)
+        {
+            fewerCoroutine = StartCoroutine(EndFewer());
+        }
+    }
+
+    private void MoveSnake()
     {
         velocity = Vector3.zero;
 
@@ -34,9 +73,7 @@ public class SnakeMover : MonoBehaviour
             MoveSideway(Vector3.left);
         }
 
-        parts.Head.transform.Translate(velocity * Time.deltaTime);
-
-        MoveChunks();
+        data.Head.SetVelocity(velocity);
     }
 
     private void MoveSideway(Vector3 side)
@@ -50,20 +87,26 @@ public class SnakeMover : MonoBehaviour
         velocity += Vector3.forward * forwardSpeed;
     }
 
+    private void MoveForwardFewer()
+    {
+        velocity += Vector3.forward * forwardSpeed * fewerSpeedMultiplier;
+    }
+
     private void MoveChunks()
     {     
-        parts.Head.SetVelocity(velocity);
+        data.Head.SetVelocity(velocity);
 
-        List<SnakeChunk> chunks = parts.Chunks;
-
-        /*for (int i = chunks.Count - 1; i >= 0; i--)
-        {           
-            chunks[i].Move();
-        }*/
+        List<SnakeChunk> chunks = data.Chunks;
         
         for (int i = 0; i < chunks.Count; i++)
         {           
             chunks[i].Move();
         }
     } 
+
+    private IEnumerator EndFewer()
+    {
+        yield return new WaitForSeconds(fewerDuration);
+        data.IsInFewer = false;
+    }
 }

@@ -10,16 +10,40 @@ public class SnakeInput : MonoBehaviour
         IsRightInput = false;
         IsLeftInput = false;
 
+        ProcessKeyboardInput(); 
+        ProcessTouchInput();
+    }
+
+    private void ProcessKeyboardInput()
+    {
+
         if (Input.GetKey(KeyCode.A))
         {
             IsLeftInput = true;
             return;
         }
-        
-        if(Input.GetKey(KeyCode.D))
+
+        if (Input.GetKey(KeyCode.D))
         {
             IsRightInput = true;
             return;
+        }
+    }
+    
+    private void ProcessTouchInput()
+    {
+        if (Input.touchCount != 1) return;
+
+        Touch touch = Input.GetTouch(0);
+        Resolution resolution = Screen.currentResolution;
+
+        if (resolution.width / 2 < touch.position.x)
+        {
+            IsLeftInput = true;
+        }
+        else
+        {
+            IsRightInput = true;
         }
     }
 }
