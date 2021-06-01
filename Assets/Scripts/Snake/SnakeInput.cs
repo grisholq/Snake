@@ -37,7 +37,7 @@ public class SnakeInput : MonoBehaviour
         Touch touch = Input.GetTouch(0);
         Resolution resolution = Screen.currentResolution;
 
-        if (resolution.width / 2 < touch.position.x)
+        if (touch.position.x < resolution.width / 2)
         {
             IsLeftInput = true;
         }
