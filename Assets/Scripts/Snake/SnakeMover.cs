@@ -34,7 +34,7 @@ public class SnakeMover : MonoBehaviour
             MoveSideway(Vector3.left);
         }
 
-        parts.Head.SetVelocity(velocity);
+        parts.Head.transform.Translate(velocity * Time.deltaTime);
 
         MoveChunks();
     }
@@ -56,7 +56,12 @@ public class SnakeMover : MonoBehaviour
 
         List<SnakeChunk> chunks = parts.Chunks;
 
-        for (int i = chunks.Count - 1; i >= 0; i--)
+        /*for (int i = chunks.Count - 1; i >= 0; i--)
+        {           
+            chunks[i].Move();
+        }*/
+        
+        for (int i = 0; i < chunks.Count; i++)
         {           
             chunks[i].Move();
         }

@@ -1113,9 +1113,9 @@ GameObject:
   m_Component:
   - component: {fileID: 546897214}
   - component: {fileID: 546897217}
+  - component: {fileID: 546897219}
   - component: {fileID: 546897216}
   - component: {fileID: 546897215}
-  - component: {fileID: 546897219}
   - component: {fileID: 546897221}
   - component: {fileID: 546897220}
   - component: {fileID: 546897218}
@@ -1184,8 +1184,8 @@ MonoBehaviour:
   chunksCount: 17
   snakeLength: 10
   chunkSettings:
-    MinDistance: 0.6
-    MaxDistance: 1
+    MinDistance: 0.8
+    MaxDistance: 0
     MinSpeed: 0
     MaxSpeed: 70
   cameraFollower: {fileID: 1809280318}
@@ -1213,9 +1213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87def94b1cb98f94bae733f278c30449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 25
-  forwardSpeedDecreace: 4
-  sideSpeed: 45
+  forwardSpeed: 20
+  forwardSpeedDecreace: 3
+  sideSpeed: 40
 --- !u!114 &546897220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2394,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1441975597022787908, guid: 274e77b319d4bd643abe7ef05afac3ef, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317508975930199297, guid: 274e77b319d4bd643abe7ef05afac3ef, type: 3}
       propertyPath: m_RootOrder

@@ -5,6 +5,7 @@ public class GlobalSceneManager : Singleton<GlobalSceneManager>
 {
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         DontDestroyOnLoad(this.gameObject);
     }
 
